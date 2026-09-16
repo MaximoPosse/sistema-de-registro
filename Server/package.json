@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node -r ts-node/register --test test/productos.test.ts",
+    "dev": "ts-node src/Index.ts",
+    "build": "tsc",
+    "start": "node dist/Index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mssql": "^12.7.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/mssql": "^12.3.0",
+    "@types/node": "^22.20.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,20 @@
+﻿
+> server@1.0.0 test
+> node -r ts-node/register --test test/productos.test.ts
+
+Ôùç injected env (6) from .env // tip: Ôîü auth for agents [www.vestauth.com]
+Ôùç injected env (0) from .env // tip: Ôîÿ custom filepath { path: '/custom/path/.env' }
+Conexi├│n exitosa a SQL Server Ô£à
+Ô£ö Modificar: modifica un producto existente (200/cambios aplicados) (560.3228ms)
+Ô£ö Modificar: id inexistente devuelve 404 (6.7356ms)
+Ô£ö Modificar: falta codigo/nombre devuelve 400 (1.3763ms)
+Ô£ö Eliminar: elimina un producto existente (200/ya no figura) (12.3978ms)
+Ô£ö Eliminar: id inexistente devuelve 404 (2.2744ms)
+Ôä╣ tests 5
+Ôä╣ suites 0
+Ôä╣ pass 5
+Ôä╣ fail 0
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 32259.559
