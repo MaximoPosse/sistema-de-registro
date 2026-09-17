@@ -38,3 +38,30 @@ export async function eliminarProducto(id: number) {
   if (!res.ok) await manejarError(res)
   return res.json()
 }
+
+export interface UsuarioSesion {
+  id: number
+  nombre: string
+  email: string
+}
+
+export async function loginUsuario(email: string, password: string): Promise<UsuarioSesion> {
+  const res = await fetch(`${API}/Login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  })
+  if (!res.ok) await manejarError(res)
+  const cuerpo = await res.json()
+  return cuerpo.usuario
+}
+
+export async function registrarUsuario(nombre: string, email: string, password: string) {
+  const res = await fetch(`${API}/RegistrarUsuario`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nombre, email, password }),
+  })
+  if (!res.ok) await manejarError(res)
+  return res.json()
+}

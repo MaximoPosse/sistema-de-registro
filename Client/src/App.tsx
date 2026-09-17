@@ -1,15 +1,32 @@
 import { useEffect, useState } from 'react'
+import Login from './components/Login'
 import FormularioProducto from './components/FormularioProducto'
 import ListaProductos from './components/ListaProductos'
-import { getProductos, crearProducto, modificarProducto, eliminarProducto } from './api'
+import { getProductos, crearProducto, modificarProducto, eliminarProducto, type UsuarioSesion } from './api'
 import type { Producto, ProductoInput } from './types'
 
+const CLAVE_SESION = 'urban-usuario'
+
 function App() {
+  const [usuario, setUsuario] = useState<UsuarioSesion | null>(() => {
+    const guardado = sessionStorage.getItem(CLAVE_SESION)
+    return guardado ? (JSON.parse(guardado) as UsuarioSesion) : null
+  })
   const [productos, setProductos] = useState<Producto[]>([])
   const [productoEditar, setProductoEditar] = useState<Producto | null>(null)
   const [cargando, setCargando] = useState(false)
   const [error, setError] = useState('')
   const [mensaje, setMensaje] = useState('')
+
+  const autenticar = (u: UsuarioSesion) => {
+    sessionStorage.setItem(CLAVE_SESION, JSON.stringify(u))
+    setUsuario(u)
+  }
+
+  const cerrarSesion = () => {
+    sessionStorage.removeItem(CLAVE_SESION)
+    setUsuario(null)
+  }
 
   const cargar = async () => {
     try {
@@ -21,6 +38,7 @@ function App() {
   }
 
   useEffect(() => {
+    if (!usuario) return
     let activo = true
     getProductos()
       .then((data) => {
@@ -32,7 +50,7 @@ function App() {
     return () => {
       activo = false
     }
-  }, [])
+  }, [usuario])
 
   const guardar = async (data: ProductoInput) => {
     setCargando(true)
@@ -76,11 +94,22 @@ function App() {
     }
   }
 
+  if (!usuario) {
+    return <Login onAutenticado={autenticar} />
+  }
+
   return (
     <div className="app">
       <header className="app-header">
         <h1>Sistema de Registro de Productos</h1>
-        <p className="app-subtitulo">Urban's - Gestión de inventario</p>
+        <div className="app-usuario">
+          <p className="app-subtitulo">
+            Hola, <strong>{usuario.nombre}</strong> ({usuario.email}) · Urban's - Gestión de inventario
+          </p>
+          <button className="boton boton-secundario" onClick={cerrarSesion}>
+            Cerrar sesión
+          </button>
+        </div>
       </header>
 
       <main className="app-main">

@@ -56,6 +56,115 @@ body {
   color: var(--texto-suave);
 }
 
+.app-usuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.app-usuario .boton {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- Login / Registro ---------- */
+.auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #eef1fb 0%, #d7ddf3 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(31, 36, 48, 0.14);
+  padding: 2rem 2rem 1.5rem;
+}
+
+.auth-marca {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.auth-inicial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primario);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.auth-marca h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.auth-marca p {
+  margin: 0.15rem 0 0;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.auth-tabs {
+  display: flex;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 0 1.5rem;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 0.6rem 0.5rem;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.auth-tab.activo {
+  background: var(--primario);
+  color: #fff;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-enviar {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.25rem;
+}
+
+.auth-hint {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
 .app-main {
   display: flex;
   flex-direction: column;
