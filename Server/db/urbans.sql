@@ -46,3 +46,16 @@ GO
 -- 4) Verificar el contenido
 SELECT id, codigo, nombre, talle, precio, stock FROM Tarjetas;
 GO
+
+-- 5) Tabla de Usuarios (para autenticación con bcrypt)
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Usuarios')
+BEGIN
+    CREATE TABLE Usuarios (
+        id            INT IDENTITY(1,1) PRIMARY KEY,
+        nombre        VARCHAR(150) NOT NULL,
+        email         VARCHAR(150) NOT NULL UNIQUE,
+        password_hash VARCHAR(255) NOT NULL,
+        creado_en     DATETIME NOT NULL DEFAULT GETDATE()
+    );
+END
+GO

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node -r ts-node/register --test test/productos.test.ts",
+    "test": "node -r ts-node/register --test test/productos.test.ts test/auth.test.ts",
     "dev": "ts-node src/Index.ts",
     "build": "tsc",
     "start": "node dist/Index.js"

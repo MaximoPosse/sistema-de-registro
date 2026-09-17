@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import Rutas from './Router/Productos.route';
+import RutasAuth from './Router/Auth.route';
 
 // Carga las variables de entorno del .env
 dotenv.config();
@@ -23,5 +24,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', Rutas);
+app.use('/api', RutasAuth);
 
 export default app;
